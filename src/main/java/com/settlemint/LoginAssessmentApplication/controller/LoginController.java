@@ -29,10 +29,7 @@ public class LoginController {
     public String login() {
         return "login";
     }
-    @GetMapping("/test")
-    public void logintest() {
-        System.out.println("it working parama");
-    }
+
     @PostMapping
     public void loginUser(@ModelAttribute("employee") EmployeeLoginDTO employeeLoginDTO) {
         System.out.println("Balaji DTO"+employeeLoginDTO);

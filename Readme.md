@@ -20,5 +20,4 @@
                     | Manager_ID (PK)  |
                     | Name             |
                     | Teams            |
-                    | Reporting_To_SeniorVP_ID (FK) |
                     +-------------------+

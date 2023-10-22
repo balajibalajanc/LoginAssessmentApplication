@@ -31,21 +31,23 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         String redirectUrl = null;
-        System.out.println("debug thailand"+""+authentication);
+
         if(authentication.getPrincipal() instanceof DefaultOAuth2User) {
             DefaultOAuth2User  userDetails = (DefaultOAuth2User ) authentication.getPrincipal();
             String username = userDetails.getAttribute("email") !=null?userDetails.getAttribute("email"):userDetails.getAttribute("login")+"@gmail.com" ;
-            System.out.println("Authentication success Balaji");
             if(employeeRepository.findByEmail(username) == null) {
                 EmployeeRegisteredDTO employee = new EmployeeRegisteredDTO();
                 employee.setEmail_id(username);
                 employee.setName(userDetails.getAttribute("email") !=null?userDetails.getAttribute("email"):userDetails.getAttribute("login"));
                 employee.setPassword(("Dummy"));
+                employee.setDesignation(("Unknown"));
+                employee.setDepartment(("External"));
+                employee.setTechnology(("Unknown"));
                 employee.setRole("USER");
                 userService.save(employee);
         }
         }
-        System.out.println("debug thailand"+""+httpServletRequest+""+httpServletResponse);
+
         redirectUrl = "/dashboard";
         new DefaultRedirectStrategy().sendRedirect(httpServletRequest, httpServletResponse, redirectUrl);
     }

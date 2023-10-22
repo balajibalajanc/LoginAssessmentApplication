@@ -18,6 +18,9 @@ public class EmployeeRegisteredDTO {
     private String email_id;
 
     private String password;
+    private String department;
+    private String designation;
+    private String technology;
 
     private String role;
 }
