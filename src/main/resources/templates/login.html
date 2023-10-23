@@ -5,13 +5,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <style>
-    .navbar {background-color: cadetblue;}
+    .navbar {background-color: azure;}
+    .heading {font-family: "Copperplate";}
 </style>
 <body>
 
 <!-- create navigation bar ( header) -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container heading">
         <h1>Assessment Settlemint</h1>
     </div>
 </nav>
@@ -23,31 +24,31 @@
             <div th:if="${param.error}">
                 <div class="alert alert-info">Either password or EmailId entered is incorrect!</div>
             </div>
-            <h1>Login </h1>
-            <div>
-                <h2><a th:href="@{/oauth2/authorization/google}">Login with Google</a></h2>
-            </div>
+            <h2 class="heading">Login </h2>
+<!--            <div>-->
+<!--                <h2><a th:href="@{/oauth2/authorization/google}">Login with Google</a></h2>-->
+<!--            </div>-->
 
-            <div>
-                <h2><a th:href="@{/oauth2/authorization/github}">Login with GitHub</a></h2>
-            </div>
             <form th:action="@{/login}" method="post" th:object="${employee}">
 
                 <div class="form-group">
-                    <label class="control-label" for="email"> Email</label>
+                    <label class="control-label heading" for="email"> User Name</label>
                     <input id="email" class="form-control" th:field="*{username}" required autofocus="autofocus"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="password">Password </label>
+                    <label class="control-label heading" for="password">Password </label>
                     <input id="password" class="form-control" type="password" th:field="*{password}" required autofocus="autofocus" />
                 </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Log In </button>
+                <div class="form-group heading">
+                    <button type="submit" class="btn btn-primary ">Log In </button>
                     <span>New User? <a href="/" th:href="@{/registration}">Register here</a></span>
                 </div>
             </form>
+            <div>
+                <h4 class="heading"><a th:href="@{/oauth2/authorization/github}">Login with GitHub</a></h4>
+            </div>
         </div>
     </div>
 </div>

@@ -26,6 +26,7 @@ public class DashboardController {
             model.addAttribute("userDetails", user.getAttribute("name")!= null ?user.getAttribute("name"):user.getAttribute("login"));
         }else {
             User user = (User) securityContext.getAuthentication().getPrincipal();
+            System.out.println("DashboardController"+" -> "+user.getUsername());
             Employee users = employeeRepository.findByEmail(user.getUsername());
             model.addAttribute("userDetails", users.getName());
         }

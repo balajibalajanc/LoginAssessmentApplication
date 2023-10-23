@@ -39,7 +39,7 @@ public class DefaultEmployeeServiceImpl implements DefaultEmployeeService{
         Manager manager=managerRepository.findById(employeeRegisteredDTO.getManagerid());
         Employee employee=new Employee();
         employee.setEmail(employeeRegisteredDTO.getEmail_id());
-        employee.setName(employeeRegisteredDTO.getName());
+        employee.setName(employeeRegisteredDTO.getUsername());
         employee.setPassword(passwordEncoder.encode(employeeRegisteredDTO.getPassword()));
         employee.setRole(role);
         employee.setDepartment(employeeRegisteredDTO.getDepartment());
@@ -50,8 +50,8 @@ public class DefaultEmployeeServiceImpl implements DefaultEmployeeService{
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Employee employee=employeeRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Employee employee=employeeRepository.findByName(username);
         //System.out.println("Inside loadUserByUsername");
         if(employee == null) {
             throw new UsernameNotFoundException("Invalid username or password.");

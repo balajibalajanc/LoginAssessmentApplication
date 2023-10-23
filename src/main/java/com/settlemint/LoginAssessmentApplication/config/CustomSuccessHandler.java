@@ -38,11 +38,11 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             if(employeeRepository.findByEmail(username) == null) {
                 EmployeeRegisteredDTO employee = new EmployeeRegisteredDTO();
                 employee.setEmail_id(username);
-                employee.setName(userDetails.getAttribute("email") !=null?userDetails.getAttribute("email"):userDetails.getAttribute("login"));
-                employee.setPassword(("Dummy"));
-                employee.setDesignation(("Unknown"));
+                employee.setUsername(userDetails.getAttribute("email") !=null?userDetails.getAttribute("email"):userDetails.getAttribute("login"));
+                employee.setPassword(("Access Token"));
+                employee.setDesignation(("Application"));
                 employee.setDepartment(("External"));
-                employee.setTechnology(("Unknown"));
+                employee.setTechnology(("Github"));
                 employee.setRole("USER");
                 userService.save(employee);
         }

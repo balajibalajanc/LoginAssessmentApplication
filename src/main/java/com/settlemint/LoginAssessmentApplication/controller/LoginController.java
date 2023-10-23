@@ -32,7 +32,6 @@ public class LoginController {
 
     @PostMapping
     public void loginUser(@ModelAttribute("employee") EmployeeLoginDTO employeeLoginDTO) {
-        System.out.println("Balaji DTO"+employeeLoginDTO);
         employeeService.loadUserByUsername(employeeLoginDTO.getUsername());
     }
 

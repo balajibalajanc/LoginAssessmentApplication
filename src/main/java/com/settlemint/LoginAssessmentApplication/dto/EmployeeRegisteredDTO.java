@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 @Builder
 public class EmployeeRegisteredDTO {
 
-    private String name;
+    private String username;
 
     private String email_id;
 
