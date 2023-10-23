@@ -33,6 +33,11 @@ public class Employee {
     @JoinTable(name = "employees_role", joinColumns = @JoinColumn(name = "emp_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
     Set<Role> roles = new HashSet<Role>();
+
+    @ManyToOne( cascade = CascadeType.ALL)
+    @JoinColumn(name = "reportingManagerId",referencedColumnName ="id")
+    private Manager reportingManager;
+
     public void setRole(Role role) {
         this.roles.add(role);
     }

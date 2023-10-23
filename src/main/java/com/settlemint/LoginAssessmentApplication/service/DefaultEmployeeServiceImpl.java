@@ -2,8 +2,10 @@ package com.settlemint.LoginAssessmentApplication.service;
 
 import com.settlemint.LoginAssessmentApplication.dto.EmployeeRegisteredDTO;
 import com.settlemint.LoginAssessmentApplication.model.Employee;
+import com.settlemint.LoginAssessmentApplication.model.Manager;
 import com.settlemint.LoginAssessmentApplication.model.Role;
 import com.settlemint.LoginAssessmentApplication.repository.EmployeeRepository;
+import com.settlemint.LoginAssessmentApplication.repository.ManagerRepository;
 import com.settlemint.LoginAssessmentApplication.repository.RoleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,15 @@ public class DefaultEmployeeServiceImpl implements DefaultEmployeeService{
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private ManagerRepository managerRepository;
+
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public Employee save(EmployeeRegisteredDTO employeeRegisteredDTO) {
         Role role = roleRepository.findByRole("USER");
+        Manager manager=managerRepository.findById(employeeRegisteredDTO.getManagerid());
         Employee employee=new Employee();
         employee.setEmail(employeeRegisteredDTO.getEmail_id());
         employee.setName(employeeRegisteredDTO.getName());
@@ -39,6 +45,7 @@ public class DefaultEmployeeServiceImpl implements DefaultEmployeeService{
         employee.setDepartment(employeeRegisteredDTO.getDepartment());
         employee.setDesignation(employeeRegisteredDTO.getDesignation());
         employee.setTechnology(employeeRegisteredDTO.getTechnology());
+        employee.setReportingManager(manager);
         return employeeRepository.save(employee);
     }
 

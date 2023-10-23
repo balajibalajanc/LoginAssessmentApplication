@@ -21,6 +21,6 @@ public class EmployeeRegisteredDTO {
     private String department;
     private String designation;
     private String technology;
-
+    private long managerid;
     private String role;
 }
