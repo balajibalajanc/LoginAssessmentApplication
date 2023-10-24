@@ -17,5 +17,4 @@ public class EmployeeLoginDTO {
 
     private String password;
 
-    private int otp;
 }

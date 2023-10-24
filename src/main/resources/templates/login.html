@@ -7,8 +7,7 @@
 </head>
 <style>
     .navbar {background-color: azure;}
-    .heading {font-family: "Copperplate";}
-
+    .container {font-family: "Copperplate";}
 </style>
 <body>
 
@@ -48,11 +47,13 @@
                     <span>New User? <a href="/" th:href="@{/registration}">Register here</a></span>
                 </div>
             </form>
+            <span>Forgot Password? <a href="/" th:href="@{/forgotPassword}"> Forgot Password</a></span>
             <div>
                 <h4 class="heading"><a th:href="@{/oauth2/authorization/github}">Login with GitHub</a></h4>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>
