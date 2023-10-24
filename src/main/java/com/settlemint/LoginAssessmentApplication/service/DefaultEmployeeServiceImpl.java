@@ -11,6 +11,7 @@ import com.settlemint.LoginAssessmentApplication.repository.RoleRepository;
 
 import com.settlemint.LoginAssessmentApplication.repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,6 +37,9 @@ public class DefaultEmployeeServiceImpl implements DefaultEmployeeService{
 
     @Autowired
     private ManagerRepository managerRepository;
+
+    @Value("${service.api.google.username}")
+    private String gusername;
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -80,7 +84,7 @@ public class DefaultEmployeeServiceImpl implements DefaultEmployeeService{
             String resetLink = generateResetToken(employee);
 
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("${VAULT[gappmail]:gappmail}");
+            msg.setFrom(gusername);
             msg.setTo(employee.getEmail());
 
             msg.setSubject("Assessment task ");

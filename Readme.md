@@ -61,33 +61,40 @@
 - Delivers responses to the end user.
 
 ## Setup and Deployment
+Here's a rephrased version for your README file:
 
-1. **Environment Setup**
-    - Ensure you have Java Development Kit (JDK) 17 installed.
-    - Set up a suitable Integrated Development Environment (IDE) for Java development (e.g., IntelliJ IDEA, Eclipse).
-    - Install and configure Apache Tomcat for serving the application.
 
-2. **Spring Boot Application**
-    - Clone the repository containing the Spring Boot application code.
-    - Import the project into your IDE.
-    - Configure the Mysql database connection in the `application.properties` file.
-    - Get the github.client-id & github.client-secret from your GitHub portal----developer settings---Oauth Apps
-    - For mail configurations,Enable your 2SV and create APP password from the security page inside the 2VS
-    - Build and run the Spring Boot application.
+### 1. Set Up Java 17 and MySQL Database
 
-3. **Frontend**
-    - Develop or integrate the UI components using HTML, CSS, and JavaScript.
-    - Ensure client-side validation for login and registration forms.
+- Start by installing Java 17 on your system.
+- Create a MySQL database named "employeedatabase."
+- In the application properties, provide the necessary username and password for connecting to your MySQL database.
 
-4. **Database**
-    - Set up an MySql database with normalized tables for Employee and Manager data.
-    - Update the database connection details in the Spring Boot application.
+### 2. Configure OAuth2 Authentication
 
-5. **Deployment**
-    - Deploy the Spring Boot application on the Tomcat server.
+#### 2.1 GitHub Authentication
 
-6. **Testing**
-    - Test the application to ensure proper authentication, registration, and data management.
+- To configure GitHub OAuth2 authentication, follow these steps:
+   1. Go to your GitHub portal.
+   2. Navigate to "Settings" and then "Developer settings" under "OAuth Apps."
+   3. Fill out the form with your desired application name.
+   4. Set the homepage URL to "http://localhost:8080."
+   5. Specify the Authorization callback URL as "http://localhost:8080/login/oauth2/code/github."
+   6. Copy the client ID and secret provided by GitHub into the application properties.
+   7. For the keys `spring.security.oauth2.client.registration.google.client-id` and `spring.security.oauth2.client.registration.google.client-secret`, you can use dummy values.
 
+#### 2.2 Email Configuration
+
+- To set up email configuration, configure the following properties:
+   - `spring.mail.username`: Provide the Gmail account you will use for the mail server.
+   - `service.api.google.username`: Specify the Gmail account from which the token email will be generated.
+   - `spring.mail.password`: To obtain this value, enable Two-Step Verification (2SV) for your Gmail account by following [this link](https://support.google.com/accounts/answer/185839). Then, create an app password using [this link](https://support.google.com/accounts/answer/185833), and use the generated app password in your application properties.
+
+### 3. Build the Project
+
+- Use the following command to build the project:
+  ```
+  mvn clean install
+  ```
 
 **Happy Managing Your Employee Data!**
