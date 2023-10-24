@@ -80,7 +80,7 @@ public class DefaultEmployeeServiceImpl implements DefaultEmployeeService{
             String resetLink = generateResetToken(employee);
 
             SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom("balajibalajanci@gmail.com");
+            msg.setFrom("${VAULT[gappmail]:gappmail}");
             msg.setTo(employee.getEmail());
 
             msg.setSubject("Assessment task ");
