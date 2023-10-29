@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,8 +35,8 @@ public class Employee {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
     Set<Role> roles = new HashSet<Role>();
 
-    @ManyToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "reportingManagerId",referencedColumnName ="id")
+    @ManyToOne( cascade = CascadeType.MERGE)
+    @JoinColumn(name = "reportingManagerId",referencedColumnName ="id",nullable = false)
     private Manager reportingManager;
 
     public void setRole(Role role) {

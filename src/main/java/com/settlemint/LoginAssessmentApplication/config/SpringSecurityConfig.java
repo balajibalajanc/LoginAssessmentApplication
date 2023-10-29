@@ -49,7 +49,7 @@ public class SpringSecurityConfig {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/registration/**","/forgotPassword/**","/login/**","/resetPassword/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/employee/**").authenticated()
                 .and()
                 .formLogin().loginPage("/login").successHandler(successHandler)
                 .and().csrf().disable()
