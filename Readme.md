@@ -97,4 +97,20 @@ Here's a rephrased version for your README file:
   mvn clean install
   ```
 
+### Working Images
+
+##### Login Page 
+![Alt Text](Utils/Img/Login Page.PNG)
+##### Registration Page
+![Alt Text](Utils/Img/Registration%20Page.PNG)
+##### Oauth Page
+![Alt Text](Utils/Img/Oauth%20Page.PNG)
+##### Forgot Password Page
+![Alt Text](Utils/Img/Forgot%20Password%20Page.PNG)
+##### Password Reset Page
+![Alt Text](Utils/Img/Password%20Reset.PNG)
+##### Get Request after Authentication Page
+![Alt Text](Utils/Img/Get%20Request%20After%20Authentication.PNG)
+
+
 **Happy Managing Your Employee Data!**
