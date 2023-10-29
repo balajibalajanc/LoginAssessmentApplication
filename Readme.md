@@ -100,7 +100,7 @@ Here's a rephrased version for your README file:
 ### Working Images
 
 ##### Login Page 
-![Alt Text](Utils/Img/Login Page.PNG)
+![Alt Text](Utils/Img/Login%20Page.PNG)
 ##### Registration Page
 ![Alt Text](Utils/Img/Registration%20Page.PNG)
 ##### Oauth Page
